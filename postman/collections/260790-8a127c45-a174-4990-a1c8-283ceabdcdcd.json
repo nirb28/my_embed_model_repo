@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "260790-8a127c45-a174-4990-a1c8-283ceabdcdcd",
+		"name": "APISIX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin - Get Route",
+			"id": "260790-26e57924-34d9-430b-a592-a1114d5b2a00",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "edd1c9f034335f136f87ad84b625c8f1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:9180/apisix/admin/routes/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9180",
+					"path": [
+						"apisix",
+						"admin",
+						"routes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mock Triton Server",
+			"id": "260790-d8a186b1-af10-46e8-9e03-8f6580c5d6de",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputs\": [{\r\n      \"name\": \"text_input\",\r\n      \"shape\": [1],\r\n      \"datatype\": \"BYTES\",\r\n      \"data\": [\"<|begin_of_text|><|start_header_id|>system<|end_header_id|>\\nYou are a helpful assistant<|eot_id|>\\n<|start_header_id|>user<|end_header_id|>\\nWhat is the capital of France?<|eot_id|>\\n<|start_header_id|>assistant<|end_header_id|>\"]\r\n    }],\r\n    \"parameters\": {\r\n      \"temperature\": 0.7,\r\n      \"max_tokens\": 100\r\n    }\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.25:5001/v2/models/Meta-Llama-3.1-8B-Instruct/generate",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"25"
+					],
+					"port": "5001",
+					"path": [
+						"v2",
+						"models",
+						"Meta-Llama-3.1-8B-Instruct",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
